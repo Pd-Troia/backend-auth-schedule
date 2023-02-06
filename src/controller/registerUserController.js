@@ -6,7 +6,7 @@ const registerUser = async(req,res) => {
     const salt = await bcrypt.genSalt(12)
     const passwordHash = await bcrypt.hash(password, salt)
     // create user
-    const user = User({firstName,lastName,email,password:passwordHash})    
+    const user = User({firstName,lastName,email,password:passwordHash,failedAttempts: 0,blockTimestamp: 0})    
     //register user in DB    
     try{        
         await user.save()
