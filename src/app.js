@@ -14,11 +14,10 @@ app.use(router)
 
 //Start server if connect DB
 const isConnected = mongodb.startDB()
-isConnected.then(()=>{
-    console.log("conectado ao banco");
+isConnected.then(()=>{    
     const port = process.env.PORT
-    app.listen(port || "3333")
-    console.log("app listen on " + port)
+    app.listen(port || 3333)
+    console.log("App listen on port " + port)
 })
 .catch((err)=>console.log(err))
 
