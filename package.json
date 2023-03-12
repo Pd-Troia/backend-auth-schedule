@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/app.js"
+    "dev": "nodemon ./src/app.js",
+    "start":"cross-env ISDEV=true node ./src/app.js"
+
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.20"
   }
 }

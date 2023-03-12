@@ -1,5 +1,6 @@
 const User = require('../model/User')
 const bcrypt = require('bcrypt')
+
 const registerUser = async(req,res) => {
     const {firstName,lastName,email,password} = req.body     
     //create hash 
