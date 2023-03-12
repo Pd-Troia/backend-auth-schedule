@@ -1,4 +1,4 @@
-const User = require('../model/User')
+const userModel = require('../model/userModel.Js')
 const bcrypt = require('bcrypt')
 
 const registerUser = async(req,res) => {
@@ -7,16 +7,12 @@ const registerUser = async(req,res) => {
     const salt = await bcrypt.genSalt(12)
     const passwordHash = await bcrypt.hash(password, salt)
     // create user
-    const user = User({firstName,lastName,email,password:passwordHash,failedAttempts: 0,blockTimestamp: 0})    
-    //register user in DB    
-    try{        
-        await user.save()
+    try{
+        await userModel.createUser(firstName,lastName,email,passwordHash)  
         res.status(200).json({msg: "Sucess to register user"})
     }catch(err){
         console.log(err)
-        res.status(402).json({msg: "Fail to register"}) 
+        return res.status(500).json({msg:"Ocorreu um erro no servidor"})
     }
-    // if has string, its a error
-    
 }
 module.exports = {registerUser}

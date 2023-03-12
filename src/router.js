@@ -11,8 +11,8 @@ router.get('/', (req,res)=> res.status(200).json({msg:"alright"}))
 
 //Resgister route
 router.post('/auth/register',   
-    registredEmailMiddleware.verifyEmail,
     validateRegister.validate,
+    registredEmailMiddleware.verifyEmail,
     registerUserController.registerUser
 )
 

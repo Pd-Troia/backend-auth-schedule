@@ -13,9 +13,7 @@ const validate = async (req,res,next) =>{
                 'A senha deve conter uma letra minúscula, letra minúscula, caracteres especiais(!#@$%&) e um número '
             ),
         confirmPassword: yup.string().required('Campo Obrigatorio').min(6, 'Minimo de 6 caracteres')
-            .test(
-                'confirmPassword',
-                'Senhas diferentes',
+            .test('confirmPassword','Senhas diferentes',
                 (value, context) => context.parent.password === value
             ),
     }) 

@@ -1,10 +1,11 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const User = require('../model/User')
+const userModel = require('../model/userModel.js')
+
 const loginUser = async  (req,res)=>{
     //verify if user exist in database
     const {email,password} = req.body
-    const user = await User.findOne({email: email})
+    const user = await userModel.getUserByEmail(email)
     if(!user){
         return res.status(404).json({msg: "email não cadastrado"})
     }  
@@ -13,23 +14,23 @@ const loginUser = async  (req,res)=>{
         return res.status(401).json({msg: "User blocked"})
     }
     // Verify Password
+    try{
     const passwordhash = user.password 
     const passwordCompare = await bcrypt.compare(password,passwordhash)     
     if(!passwordCompare){ 
         if(user.failedAttempts > 3){ 
-            user.blockTimestamp = Date.now() + 300000  
-            await user.save()          
+            await userModel.blockUser(user)        
             return res.status(401).json({msg:"User blocked for multiple failed attempts"})
         }else{
-        user.failedAttempts = user.failedAttempts + 1;
-        await user.save()      
-        console.log(user)
+        await userModel.inscraseFailedAttempts(user)       
         return res.status(401).json({msg:'Incorrect Password'})  
         }      
     }  
-    user.failedAttempts = 0
-    user.blockTimestamp = 0
-    await user.save()  
+    userModel.desblockUser(user) 
+    }catch(err){
+        console.log(err)
+        res.status(401).json({msg:"Ocorreu um erro no servidor"})
+    }
     // response user id and token
     const secret = process.env.SECRET
     const token = jwt.sign({id: user._id},secret)
