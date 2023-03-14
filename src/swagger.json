@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "New Document",
-    "description": "",
+    "title": "Schedule Login",
+    "description": "Authentication API",
     "contact": {},
     "version": "1.0"
   },
@@ -36,8 +36,8 @@
                       "firstName": "Ademir",
                       "lastName": "Adm",
                       "email": "admin@gmail.com",
-                      "password": "L@rdp37b89d41",
-                      "confirmPassword": "L@rdp37b89d41"
+                      "password": "u95@N2Hant*P",
+                      "confirmPassword": "u95@N2Hant*P"
                     }
                   }
                 ]
@@ -46,8 +46,8 @@
                 "firstName": "Ademir",
                 "lastName": "Adm",
                 "email": "admin@gmail.com",
-                "password": "L@rdp37b89d41",
-                "confirmPassword": "L@rdp37b89d41"
+                "password": "u95@N2Hant*P",
+                "confirmPassword": "u95@N2Hant*P"
               }
             }
           },
@@ -55,11 +55,23 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "A confirm message",
             "headers": {},
             "content": {
-              "text/plain": {
-                "schema": {}
+              "application/json": {
+                "schema": {
+                  "msg": {
+                    "type":"object",
+                    "properties":{
+                      "msg":{
+                        "type":"string"
+                      }
+                    }                 
+                  }
+                },
+                "example":{
+                  "msg":"Sucess to register user"
+                }
               }
             }
           }
@@ -89,14 +101,14 @@
                   {
                     "example": {
                       "email": "admin@gmail.com",
-                      "password": "L@rdp37b89d41"
+                      "password": "u95@N2Hant*P"
                     }
                   }
                 ]
               },
               "example": {
                 "email": "admin@gmail.com",
-                "password": "L@rdp37b89d41"
+                "password": "u95@N2Hant*P"
               }
             }
           },
@@ -107,8 +119,26 @@
             "description": "",
             "headers": {},
             "content": {
-              "text/plain": {
-                "schema": {}
+              "application/json": {
+                "schema": {
+                  "type":"object",
+                  "properties":{
+                    "msg":{
+                      "type":"string"
+                    },
+                    "id":{
+                      "type":"string"
+                    },
+                    "token":{
+                      "type":"string"
+                    }
+                  }
+                },
+                "example":{
+                  "msg": "Sucessful Login",
+                  "id": "6410ae1b8dd70ddfea757d49",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTBhZTFiOGRkNzBkZGZlYTc1N2Q0OSIsImlhdCI6MTY3ODgxNDk5N30.Ga1SBI884hOA5QOrwN3CYVvo4nBIGAu70MdO1AXHUE0"
+                }
               }
             }
           }
@@ -151,8 +181,8 @@
           "firstName": "Ademir",
           "lastName": "Adm",
           "email": "admin@gmail.com",
-          "password": "L@rdp37b89d41",
-          "confirmPassword": "L@rdp37b89d41"
+          "password": "u95@N2Hant*P",
+          "confirmPassword": "u95@N2Hant*P"
         }
       },
       "NewRequestRequest1": {
@@ -172,7 +202,7 @@
         },
         "example": {
           "email": "admin@gmail.com",
-          "password": "L@rdp37b89d41"
+          "password": "u95@N2Hant*P"
         }
       }
     }

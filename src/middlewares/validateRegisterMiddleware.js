@@ -2,12 +2,12 @@
 const yup = require('yup')
 
 const validate = async (req,res,next) =>{
-    //validate terms
-    const regexName = new RegExp("^(?![ ])(?!.*[ ]{2})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)\s*?|(?:[A-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'][^\s]*\s*?)(?!.*[ ]$))+$")
+    //validate terms    
+    const regexName = new RegExp("^[A-ZÀ-ÖØ-Ý][a-zà-öø-ý]*(\s[A-ZÀ-ÖØ-Ý][a-zà-öø-ý]*)*$")    
     const regexPassword = new RegExp("^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,15}$")
     const schema = yup.object({
         firstName: yup.string().required('Campo Obrigatorio').matches(regexName, 'Nome inválido'),
-        lastName: yup.string().required('Campo Obrigatorio').matches(regexName, 'Nome inválido'),
+        lastName: yup.string().required('Campo Obrigatorio').matches(regexName, 'Nome invalido'),
         email: yup.string().email('Deve ser inserido um email válido').required('Campo Obrigatorio'),
         password: yup.string().required('Campo Obrigatorio').min(6, 'Minimo de 6 caracteres').matches(
                 regexPassword,
