@@ -1,0 +1,186 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "New Document",
+    "description": "",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "localhost:3333/auth",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": [
+          "API LOGIN"
+        ],
+        "summary": "New Request",
+        "description": "",
+        "operationId": "NewRequest",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/NewRequestRequest"
+                  },
+                  {
+                    "example": {
+                      "firstName": "Ademir",
+                      "lastName": "Adm",
+                      "email": "admin@gmail.com",
+                      "password": "L@rdp37b89d41",
+                      "confirmPassword": "L@rdp37b89d41"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "firstName": "Ademir",
+                "lastName": "Adm",
+                "email": "admin@gmail.com",
+                "password": "L@rdp37b89d41",
+                "confirmPassword": "L@rdp37b89d41"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "text/plain": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "API LOGIN"
+        ],
+        "summary": "New Request1",
+        "description": "",
+        "operationId": "NewRequest1",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/NewRequestRequest1"
+                  },
+                  {
+                    "example": {
+                      "email": "admin@gmail.com",
+                      "password": "L@rdp37b89d41"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "admin@gmail.com",
+                "password": "L@rdp37b89d41"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "text/plain": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "NewRequestRequest": {
+        "title": "NewRequestRequest",
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "password",
+          "confirmPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "firstName": "Ademir",
+          "lastName": "Adm",
+          "email": "admin@gmail.com",
+          "password": "L@rdp37b89d41",
+          "confirmPassword": "L@rdp37b89d41"
+        }
+      },
+      "NewRequestRequest1": {
+        "title": "NewRequestRequest1",
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "admin@gmail.com",
+          "password": "L@rdp37b89d41"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "API LOGIN",
+      "description": ""
+    }
+  ]
+}

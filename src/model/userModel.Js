@@ -1,17 +1,9 @@
-const mongoose = require('mongoose')
-const { number } = require('yup')
-const User = mongoose.model("User",{
-    firstName: String,
-    lastName: String,
-    email: String,
-    password: String,
-    failedAttempts: Number,
-    blockTimestamp: Number,
-})
+const User = require('./User')
+
 
 const getUserByEmail = async(email) =>{
     try{
-        const user = await email.findOne({email})
+        const user = await User.findOne({email})
         return user
     }catch(err){        
         throw new Error("Ocorreu um erro no servidor")

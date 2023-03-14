@@ -1,5 +1,6 @@
 // use Yup to validate login
 const yup = require('yup')
+
 const validate = async(req,res,next) =>{
     const schema = yup.object({
         email: yup.string().required('campo vazio').email("Insira um email válido"),
