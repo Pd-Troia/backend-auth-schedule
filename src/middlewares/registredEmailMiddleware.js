@@ -1,5 +1,5 @@
 // this middleware verify if the email has been registred
-const userModel = require('../model/userModel')
+const userModel = require('../model/userModel.js')
 const verifyEmail = async(req,res,next)=>{
     const {email} = req.body
     const user = await userModel.getUserByEmail(email)
