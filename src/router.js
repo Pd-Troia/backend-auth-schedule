@@ -1,9 +1,9 @@
 const express = require('express')
-const registerUserController = require('./controller/registerUserController')
-const loginUserController = require('./controller/loginUserController')
-const validateLoginMiddleware = require('./middlewares/validateLoginMiddleware')
-const validateRegister = require('./middlewares/validateRegisterMiddleware')
-const registredEmailMiddleware = require('./middlewares/registredEmailMiddleware')
+const registerUserController = require('./controller/registerUserController.js')
+const loginUserController = require('./controller/loginUserController.js')
+const validateLoginMiddleware = require('./middlewares/validateLoginMiddleware.js')
+const validateRegister = require('./middlewares/validateRegisterMiddleware.js')
+const registredEmailMiddleware = require('./middlewares/registredEmailMiddleware.js')
 const router = express.Router()
 
 // Home route
