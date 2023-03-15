@@ -1,6 +1,5 @@
 const User = require('./User')
 
-
 const getUserByEmail = async(email) =>{
     try{
         const user = await User.findOne({email})
