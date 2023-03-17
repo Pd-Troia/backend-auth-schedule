@@ -28,15 +28,16 @@ const loginUser = async  (req,res)=>{
             }      
         }  
         userModel.desblockUser(user) 
-    }catch(err){
-        console.log(err)
-        res.status(501).json({msg:"Ocorreu um erro no servidor"})
-    }
+    
     // response user id and token
     const secret = process.env.SECRET
     const token = jwt.sign({id: user._id},secret)
     // response
     return res.status(200).json({msg:"Sucessful Login",id: user._id, token})
+    }catch(err){
+        console.log(err)
+        res.status(501).json({msg:"Ocorreu um erro no servidor"})
+    }
 }
 
 module.exports = {loginUser}
