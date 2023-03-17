@@ -10,5 +10,4 @@ const schema = mongoose.Schema({
     blockTimestamp: Number, 
 })
 const User = mongoose.model('User', schema)
-
 module.exports = User
