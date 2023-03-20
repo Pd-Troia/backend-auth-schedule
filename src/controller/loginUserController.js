@@ -30,8 +30,8 @@ const loginUser = async  (req,res)=>{
         userModel.desblockUser(user) 
     
     // response user id and token
-    const secret = process.env.SECRET
-    const token = jwt.sign({id: user._id},secret)
+    const secret = process.env.SECRET       
+    const token = await jwt.sign({id: user._id},secret, {algorithm:"HS256"})
     // response
     return res.status(200).json({msg:"Sucessful Login",id: user._id, token})
     }catch(err){
